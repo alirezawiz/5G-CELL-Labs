@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  server:
+    build: ./server
+    ports:
+      - "9090:9090"
+    environment:
+      - DATABASE_PATH=/data/db.sqlite3
+    volumes:
+      - ./db/db.sqlite3:/data/db.sqlite3  # External database mounted here
+    networks:
+      - app-network
+    command: python3 server.py
+
+  client:
+    build: ./client
+    environment:
+      - IMSI=223456789012345  
+      - KEY=abcde12345        
+    networks:
+      - app-network
+    depends_on:
+      - server
+
+networks:
+  app-network:
+

@@ -1,0 +1,7 @@
+CREATE TABLE credentials (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    imsi TEXT NOT NULL,
+    key TEXT NOT NULL
+);
+
+INSERT INTO credentials (imsi, key) VALUES ('123456789012345', 'abcde12345');

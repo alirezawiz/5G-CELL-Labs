@@ -1,0 +1,9 @@
+- name: Install curl on all servers
+  hosts: all
+  become: yes  # Ensures that Ansible uses sudo to install the package
+  tasks:
+
+     - name: Hold Kubernetes packages
+       ansible.builtin.shell: |
+         kubeadm join 132.227.122.46:6443 --token nplvjy.xp59sfx9lya9dn56 --discovery-token-ca-cert-hash sha256:4f44d0628aeb54869d321b4f50bf88880174b2fcea96f64f685179b021085e9b --cri-socket=unix:///var/run/cri-dockerd.sock
+

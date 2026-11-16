@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  server:
+    build:
+      context: ./server
+    ports:
+      - ""HOST_PORT:CONTAINER_PORT""
+
+  client:
+    build:
+      context: ./client
+    depends_on:
+      - server
